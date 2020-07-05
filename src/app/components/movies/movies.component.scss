@@ -1,0 +1,106 @@
+.nav-list {
+    max-width: 100%;
+    margin: 0 auto;
+}
+
+.cards {
+    max-width: 980px;
+    margin: 0 auto;
+   
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 35px;
+
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    height: auto;
+    width: 240px;
+    margin: 0 auto;
+    padding: 0;
+    background-color: white;
+    
+    border-radius: 8px;
+
+    margin-top: 5px;
+
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+img {
+    width: 100%;
+    cursor: pointer;
+    outline: none;
+
+    border-radius: 8px 8px 0 0;
+}
+
+.content {
+    width: 100%;
+    padding: 26px 10px 12px 10px;
+    position: relative;
+    white-space: normal;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+}
+
+.title {
+    font-size: 1.2em;
+    color: #000;
+    font-weight: bold;
+
+    // position: absolute;
+}
+
+.date {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    color: rgba(0,0,0,0.6);
+
+    font-size: 24px;
+
+    margin-top: 8px;
+}
+
+.content .date {
+    padding: 36px 0px 30px 0;
+}
+
+.pagination {
+    font-family: 'Source Sans Pro', Arial, sans-serif;
+
+    width: 100%;
+    background-color: white;
+    color: rgba(0,0,0,0.6);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    margin-top: 40px;
+
+    font-size: 20px;
+    font-weight: 700;
+}
+
+// INPUT
+
+input {
+    width: 680px;
+    padding: 8px 16px;
+    
+    font-size: 16px;
+    
+    border-radius: 8px;
+    border: gray solid 1px;
+    outline: none;
+
+    display: flex;
+    margin: 8px auto;
+}

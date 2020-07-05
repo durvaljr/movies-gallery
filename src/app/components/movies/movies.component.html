@@ -1,0 +1,19 @@
+<input placeholder="Item name..." type="text" (keyup)="filterName($event.target.value)" />
+<section class="cards">
+  <mat-nav-list class="nav-list" *ngFor="let movie of movies">
+    <mat-card class="card">
+      <img routerLink="/movie-detail" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}">
+      <mat-card-content class="content">
+          <h2 class="title">
+            <a routerLink="/movie-detail">{{movie.title}}</a>
+          </h2>
+          <p class="date">
+            {{movie.release_date}}
+          </p>
+      </mat-card-content>
+    </mat-card>
+  </mat-nav-list>
+</section>
+
+<mat-paginator class="pagination" [length]="totalPages" [pageSize]="movies.length" (page)="nextPreviewsPage($event)">
+</mat-paginator>
