@@ -1,4 +1,4 @@
-<input placeholder="Item name..." type="text" (keyup)="filterName($event.target.value)" />
+<input placeholder="Pesquise pelo nome do filme" type="text" (keyup)="filterName($event.target.value)" />
 <section class="cards">
   <mat-nav-list class="nav-list" *ngFor="let movie of movies">
     <mat-card class="card">
@@ -15,5 +15,5 @@
   </mat-nav-list>
 </section>
 
-<mat-paginator class="pagination" [length]="totalPages" [pageSize]="movies.length" (page)="nextPreviewsPage($event)">
+<mat-paginator class="pagination" [length]="totalResults" [pageSize]="nMovies" (page)="nextPreviewsPage($event)" #paginator>
 </mat-paginator>

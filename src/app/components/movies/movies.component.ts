@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { MoviesService } from 'src/app/services/movies.service';
+import { MatPaginator } from '@angular/material';
 
 @Component({
   selector: 'app-movies',
@@ -8,10 +9,13 @@ import { MoviesService } from 'src/app/services/movies.service';
 })
 export class MoviesComponent implements OnInit {
 
+  queryMovie: string = "";
   movies: any;
   err: any;
-  totalPages: any;
-  txTituloPesquisa: String = '';
+  totalResults: any;
+  nMovies: any;
+
+  @ViewChild('paginator') paginator: MatPaginator;
 
   constructor(private moviesService: MoviesService) {
     this.getMovies();
@@ -20,10 +24,11 @@ export class MoviesComponent implements OnInit {
   }
 
   getMovies() {
-    this.moviesService.getAllMovies().subscribe(
+    this.moviesService.getPopularMovies().subscribe(
       (data: any) => {
         this.movies = data.results;
-        this.totalPages = data.total_pages;
+        this.totalResults = data.total_results;
+        this.nMovies = data.results.length;
 
         console.log(data)
       }, error => {
@@ -33,23 +38,41 @@ export class MoviesComponent implements OnInit {
     )
   }
 
-  nextPreviewsPage(ev) {
-    this.moviesService.setPage(ev.pageIndex)
-    this.getMovies();
+  getSearchMovies(movieName: string) {
+    this.moviesService.getSearchMovies(movieName).subscribe(
+      (data: any) => {
+        this.movies = data.results;
+        this.totalResults = data.total_results;
+        this.nMovies = data.results.length;
+
+        console.log(data)
+      }, error => {
+        this.err = error;
+        console.log(this.err)
+      }
+    )
   }
 
-  filterName(texto: string) {
-    console.log(texto)
-    if (texto != '') {
-      this.movies = this.movies.filter(res => {
-        // console.log(res.title)
-        return res.title.toLocaleLowerCase().match(texto.toLocaleLowerCase());
-      })
-    } else {
-      this.ngOnInit();
-      console.log("chegou")
-      this.getMovies();
-    }
+  nextPreviewsPage(event) {
+    this.moviesService.setPage(event.pageIndex);
+    this.filterName(this.queryMovie);
   }
-  
+
+  filterName(movieName: string) {
+
+    if (this.queryMovie != movieName) {
+      console.log("passei por aqui")
+      this.moviesService.setPage(0)
+      this.paginator.firstPage()
+    }
+
+    this.queryMovie = movieName
+
+    if (movieName != '') {
+      this.getSearchMovies(movieName)
+    } else {
+      this.getMovies();
+      // this.moviesService.setPage(0)
+    }
+  }  
 }
