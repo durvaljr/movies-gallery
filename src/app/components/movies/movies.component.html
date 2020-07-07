@@ -7,20 +7,18 @@
     <h4>Filtrar por categorias</h4>
     <mat-form-field class="form-select" appearance="fill">
       <mat-label>Categorias</mat-label>
-      <mat-select multiple class="select-content">
+      <mat-select multiple class="select-content" (selectionChange)="getCategories($event.value)" [(value)]="selected">
         <mat-option *ngFor="let genre of genres" [value]="genre.id">
           {{genre.name}}
         </mat-option>
       </mat-select>
     </mat-form-field>
-
-    <button class="btn-filter" mat-flat-button color="primary">Filtrar</button>
   </div>
 
   <div class="movies-list">
     <!-- CARDS DE FILMES -->
     <section class="cards">
-      <mat-nav-list class="nav-list" *ngFor="let movie of movies">
+      <mat-nav-list class="nav-list" *ngFor="let movie of movies; let i = index">
         <mat-card class="card">
           <img routerLink="/movie-detail" src="https://image.tmdb.org/t/p/w500/{{movie.poster_path}}"
             (click)="getDetails(movie)">
@@ -29,7 +27,7 @@
               <a routerLink="/movie-detail">{{movie.title}}</a>
             </h2>
             <p class="date">
-              {{movie.release_date}}
+              {{movie.release_date | date}}
             </p>
           </mat-card-content>
         </mat-card>

@@ -29,7 +29,7 @@ export class MovieDetailComponent implements OnInit {
     this.moviesService.getMovieDetails(this.movieId.id).subscribe((data: any) => {
       this.movieSelect = data
       // console.log("data", data)
-      console.log("moviesService", this.movieSelect)
+      console.log("movieSelect", this.movieSelect)
     }, error => {
       this.err = error
       console.log(this.err)

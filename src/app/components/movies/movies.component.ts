@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MoviesService } from 'src/app/services/movies.service';
 import { MatPaginator } from '@angular/material';
 import { Router } from '@angular/router';
+import { forEach } from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -18,6 +19,7 @@ export class MoviesComponent implements OnInit {
   nMovies: any;
   genres: any;
   movieDetails: Array<any>;
+  selected: any
 
   @ViewChild('paginator') paginator: MatPaginator;
 
@@ -25,18 +27,18 @@ export class MoviesComponent implements OnInit {
     this.getMovies();
     this.getGenre();
   }
-  ngOnInit() {  
+  ngOnInit() {
   }
 
   // Selecionando os filmes popupalres
   getMovies() {
     this.moviesService.getPopularMovies().subscribe(
       (data: any) => {
+        // recebendo os filmes / conteudo total e tamanho do results
         this.movies = data.results;
         this.totalResults = data.total_results;
         this.nMovies = data.results.length;
 
-        // console.log("getMovies -> ",data)
       }, error => {
         this.err = error;
         console.log(this.err)
@@ -51,7 +53,7 @@ export class MoviesComponent implements OnInit {
         this.movies = data.results;
         this.totalResults = data.total_results;
         this.nMovies = data.results.length;
-        
+
       }, error => {
         this.err = error;
         console.log(this.err)
@@ -64,22 +66,19 @@ export class MoviesComponent implements OnInit {
     this.moviesService.getGenreMovies().subscribe(
       (data: any) => {
         this.genres = data.genres
-        // console.log(this.genres)
       }, error => {
         this.err = error;
         console.log(this.err)
       })
   }
-  
+
   // Paginação
   previewsPage(event) {
     this.moviesService.setPage(event.pageIndex);
     this.filterName(this.queryMovie);
   }
 
-  // 
   filterName(movieName: string) {
-
     if (this.queryMovie != movieName) {
       this.moviesService.setPage(0)
       this.paginator.firstPage()
@@ -89,15 +88,14 @@ export class MoviesComponent implements OnInit {
 
     if (movieName != '') {
       this.getSearchMovies(movieName)
-    } else {
+    } else if(this.selected != ""){
+      this.getCategories(this.selected)
+    } else  {
       this.getMovies();
+      
       // this.moviesService.setPage(0)
     }
   }
-
-  // getSelectGenre() {
-
-  // }
 
   // Selecionando o filme e passando o Id para a pagina de detalhes
   getDetails(movie: any) {
@@ -111,5 +109,18 @@ export class MoviesComponent implements OnInit {
         console.log(this.err)
       }
     )
+  }
+
+  getCategories(categoria: string) {
+    categoria.toString()
+    this.moviesService.filterGenreMovies(categoria).subscribe((data: any) => {
+      this.movies = data.results
+      this.totalResults = data.total_results;
+      this.nMovies = data.results.length;
+      // console.log(this.movies)
+    }, error => {
+      this.err = error
+      console.log(this.err)
+    })
   }
 }
