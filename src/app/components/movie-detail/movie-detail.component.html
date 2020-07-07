@@ -1,1 +1,12 @@
-asdasdsad
+<div class="content">
+    <img src="https://image.tmdb.org/t/p/w500/{{movieSelect.poster_path}}" alt="">
+    {{movieSelect.title}}
+    ({{movieSelect.release_date}})
+    {{movieSelect.release_date}}
+    <div *ngFor="let genero of movieSelect.genres">
+        {{genero.name}}
+    </div>
+    {{movieSelect.runtime}}
+
+    {{movieSelect.overview}}
+</div>

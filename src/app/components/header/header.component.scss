@@ -1,0 +1,40 @@
+// .header {
+//     display: flex;
+//     align-items: center;
+// }
+
+// .header a {
+//     display: flex;
+//     align-items: center;
+//     text-decoration: none;
+// }
+
+// .header .logo {
+//     max-height: 200px;
+// }
+mat-toolbar {
+    background-color: #0d253f;
+}
+
+header{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    // justify-content: space-between;
+}
+
+header h1 {
+    text-transform: uppercase;
+    margin-right: 30px;
+    cursor: pointer;
+    outline: none;
+}
+
+header a {
+    text-decoration: none;
+    color: white;
+}
+
+header a:hover {
+    color: white;
+    transition: 200ms;
+}

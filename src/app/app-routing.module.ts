@@ -16,7 +16,7 @@ const routes: Routes = [
     data: { title: 'Lista de filmes' }
   },
   {
-    path: 'movie-detail',
+    path: 'movie-detail/:id',
     component: MovieDetailComponent,
     data: { title: 'Detalhe do filme' }
   }
