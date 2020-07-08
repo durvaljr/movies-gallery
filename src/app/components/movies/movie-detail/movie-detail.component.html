@@ -1,0 +1,34 @@
+<div class="keyboard">
+    <div class="sigle-column">
+        <section class="original-header">
+            <div class="poster-wrapper">
+                <div class="poster">        
+                    <img src="https://image.tmdb.org/t/p/w500/{{movieSelect.poster_path}}" alt="">
+                </div>
+            </div>
+            <div class="header_poster_wrapper">
+                <section class="header poster">
+                    <div class="title ott_true">
+                        <h2 class="47">
+                            <h3>{{movieSelect.title}}</h3>
+                            <span class="tag release_date">({{movieSelect.release_date | date: "yyyy"}})</span>
+                        </h2>
+                        <div class="facts">
+                            <span class="release">Ano de lançadamento: {{movieSelect.release_date | date: "dd/MM/yyyy"}}</span> <br />
+                            <div class="genres">
+                                <span *ngFor="let genre of movieSelect.genres">
+                                    <p class="genre_title">{{genre.name}}</p>
+                                </span>
+                            </div>
+                            <span class="runtime">Duração: <b>{{movieSelect.runtime}} min</b></span><br />
+                        </div>
+                    </div>
+                    <h3 class="title-overview">Descrição</h3>
+                    <div class="overview">
+                        <p>{{movieSelect.overview}}</p>
+                    </div>
+                </section>
+            </div>
+        </section>
+    </div>
+</div>

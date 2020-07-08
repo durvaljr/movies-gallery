@@ -4,7 +4,7 @@
 <div class="page-content">
   <!-- SELECT -->
   <div class="filter-genres">
-    <h4>Filtrar por categorias</h4>
+    <h4 class="title-filter" style="padding-bottom: 16px;">Filtrar por categorias</h4>
     <mat-form-field class="form-select" appearance="fill">
       <mat-label>Categorias</mat-label>
       <mat-select multiple class="select-content" (selectionChange)="getCategories($event.value)" [(value)]="selected">
@@ -36,6 +36,8 @@
   </div>
 </div>
 
-<!-- COMPONENTE DE PAGINACAO -->
+  <!-- COMPONENTE DE PAGINACAO -->
 <mat-paginator class="pagination" [length]="totalResults" [pageSize]="nMovies" (page)="previewsPage($event)" #paginator>
 </mat-paginator>
+
+

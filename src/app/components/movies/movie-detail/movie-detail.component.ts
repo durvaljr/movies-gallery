@@ -21,21 +21,15 @@ export class MovieDetailComponent implements OnInit {
     // recebendo o ID da Rota
     this.route.params.subscribe((data: any) => {
       this.movieId = data;
-      // console.log("movieSelect", this.movieId)
-      // console.log("data", data)
     })
 
     // buscando dos dados na API passando o Id recebido da rota como parâmetro
     this.moviesService.getMovieDetails(this.movieId.id).subscribe((data: any) => {
       this.movieSelect = data
-      // console.log("data", data)
-      console.log("movieSelect", this.movieSelect)
+      console.log(this.movieSelect)
     }, error => {
       this.err = error
       console.log(this.err)
     })
   }
-
-  
-
 }

@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MoviesService } from 'src/app/services/movies.service';
 import { MatPaginator } from '@angular/material';
 import { Router } from '@angular/router';
-import { forEach } from '@angular/router/src/utils/collection';
 
 
 @Component({
@@ -13,6 +12,7 @@ import { forEach } from '@angular/router/src/utils/collection';
 export class MoviesComponent implements OnInit {
 
   queryMovie: string = "";
+  queryGenre: string = "";
   movies: any;
   err: any;
   totalResults: any;
@@ -38,7 +38,6 @@ export class MoviesComponent implements OnInit {
         this.movies = data.results;
         this.totalResults = data.total_results;
         this.nMovies = data.results.length;
-
       }, error => {
         this.err = error;
         console.log(this.err)
@@ -76,9 +75,10 @@ export class MoviesComponent implements OnInit {
   previewsPage(event) {
     this.moviesService.setPage(event.pageIndex);
     this.filterName(this.queryMovie);
-    if(this.selected != "")
-      this.getCategories(this.selected)
-     
+    if (this.queryGenre != '') {
+      this.filterGenre(this.queryGenre)
+    }
+
   }
 
   filterName(movieName: string) {
@@ -93,8 +93,21 @@ export class MoviesComponent implements OnInit {
       this.getSearchMovies(movieName)
     } else {
       this.getMovies();
-      
-      // this.moviesService.setPage(0)
+    }
+  }
+
+  filterGenre(genres: string) {
+    if (this.queryGenre != genres) {
+      this.moviesService.setPage(0)
+      this.paginator.firstPage()
+    }
+
+    this.queryGenre = genres
+
+    if (genres != '') {
+      this.getCategories(genres)
+    } else {
+      this.getMovies();
     }
   }
 
@@ -103,7 +116,6 @@ export class MoviesComponent implements OnInit {
     this.moviesService.getMovieDetails(movie.id).subscribe(
       (data: any) => {
         this.movieDetails = data
-        // console.log(this.movieDetails)
         this.router.navigate(['/movie-detail', movie.id])
       }, error => {
         this.err = error
@@ -112,13 +124,12 @@ export class MoviesComponent implements OnInit {
     )
   }
 
-  getCategories(categoria: string) {
-    categoria.toString()
-    this.moviesService.filterGenreMovies(categoria).subscribe((data: any) => {
+  getCategories(genres: string) {
+    genres.toString()
+    this.moviesService.filterGenreMovies(genres).subscribe((data: any) => {
       this.movies = data.results
       this.totalResults = data.total_results;
       this.nMovies = data.results.length;
-      // console.log(this.movies)
     }, error => {
       this.err = error
       console.log(this.err)

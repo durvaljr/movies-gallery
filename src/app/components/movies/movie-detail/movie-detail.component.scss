@@ -1,0 +1,86 @@
+
+.keyboard {
+  width: 750px;
+  margin: 52px auto;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+
+  background-image: linear-gradient(to right, rgba(11.76%, 18.43%, 23.53%, 1.00) 150px, rgba(18.82%, 25.49%, 30.59%, 0.84) 100%);
+}
+
+h2 {
+  display: flex;
+  flex-direction: row;
+}
+
+.tag {
+  padding-left: 5px;
+}
+
+.sigle-column {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  padding-left: 40px;
+  padding-right: 40px;
+  max-width: 1300px;
+  width: 100%;
+  padding-top: 30px;
+  padding-bottom: 30px;
+  z-index: 0;
+  box-sizing: border-box;
+}
+
+img {
+  width: 300px;
+  height: 450px;
+  border-width: 0px;
+  outline: none;
+
+  border-radius: 8px;
+}
+
+.poster {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+}
+
+.header_poster_wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  align-content: center;
+  box-sizing: border-box;
+  color: #ffffff;
+}
+
+h3 {
+  font-size: 1em;
+}
+
+.genres {
+  display: flex;
+  flex-direction: row;
+}
+
+.genres .genre_title {
+    content: ",";
+    color: white;
+    padding-right: 3px;
+}
+
+.genres .genre_title::after {
+    content: ",";
+}
+
+.genres .genre_title::after:last-child {
+    content: "";
+}
+
+.title-overview {
+ padding-top: 8px;
+}
+
+.overview p {
+    text-align: justify;
+}

@@ -8,7 +8,7 @@ Ao acessar a pasta do projeto em seu terminal, rode o comando `npm install` para
 
 ## Servidor de desenvolvimento
 
-Rode o comando `ng serve` e o projeto já estará funcionando na porta `http://localhost:4200/`. O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
+Rode o comando `npm start` e o projeto já estará funcionando na porta `http://localhost:4200/`. O aplicativo será recarregado automaticamente se você alterar qualquer um dos arquivos de origem.
 
 ## Ajuda
 

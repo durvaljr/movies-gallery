@@ -19,7 +19,7 @@ import {
   MatPaginatorModule
 } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MovieDetailComponent } from './components/movie-detail/movie-detail.component';
+import { MovieDetailComponent } from './components/movies/movie-detail/movie-detail.component';
 import { HeaderComponent } from './components/header/header.component';
 import { HomeComponent } from './components/home/home.component';
 
