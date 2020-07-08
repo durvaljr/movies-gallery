@@ -76,6 +76,9 @@ export class MoviesComponent implements OnInit {
   previewsPage(event) {
     this.moviesService.setPage(event.pageIndex);
     this.filterName(this.queryMovie);
+    if(this.selected != "")
+      this.getCategories(this.selected)
+     
   }
 
   filterName(movieName: string) {
@@ -88,9 +91,7 @@ export class MoviesComponent implements OnInit {
 
     if (movieName != '') {
       this.getSearchMovies(movieName)
-    } else if(this.selected != ""){
-      this.getCategories(this.selected)
-    } else  {
+    } else {
       this.getMovies();
       
       // this.moviesService.setPage(0)
