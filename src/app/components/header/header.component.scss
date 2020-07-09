@@ -1,17 +1,3 @@
-// .header {
-//     display: flex;
-//     align-items: center;
-// }
-
-// .header a {
-//     display: flex;
-//     align-items: center;
-//     text-decoration: none;
-// }
-
-// .header .logo {
-//     max-height: 200px;
-// }
 mat-toolbar {
     background-color: #0d253f;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
@@ -28,6 +14,11 @@ header h1 {
     margin-right: 30px;
     cursor: pointer;
     outline: none;
+    transition: 200ms;
+}
+
+header h1:hover {
+    color: rgba(255, 255, 255, 0.74);
 }
 
 header a {
@@ -36,6 +27,6 @@ header a {
 }
 
 header a:hover {
-    color: white;
+    color: rgba(255, 255, 255, 0.74);
     transition: 200ms;
 }
