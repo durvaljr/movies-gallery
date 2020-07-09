@@ -11,8 +11,8 @@ import { Router } from '@angular/router';
 })
 export class MoviesComponent implements OnInit {
 
-  queryMovie: string = "";
-  queryGenre: string = "";
+  searchMovies: string = "";
+  searchGenre: string = "";
   movies: any;
   err: any;
   totalResults: any;
@@ -49,10 +49,12 @@ export class MoviesComponent implements OnInit {
   getSearchMovies(movieName: string) {
     this.moviesService.getSearchMovies(movieName).subscribe(
       (data: any) => {
+        console.log(data)
         this.movies = data.results;
+        console.log(this.movies)
         this.totalResults = data.total_results;
         this.nMovies = data.results.length;
-
+        
       }, error => {
         this.err = error;
         console.log(this.err)
@@ -74,20 +76,20 @@ export class MoviesComponent implements OnInit {
   // Paginação
   previewsPage(event) {
     this.moviesService.setPage(event.pageIndex);
-    this.filterName(this.queryMovie);
-    if (this.queryGenre != '') {
-      this.filterGenre(this.queryGenre)
+    if (this.searchGenre != '') {
+      this.filterGenre(this.searchGenre);
+    } else {
+      this.filterName(this.searchMovies);
     }
-
   }
 
   filterName(movieName: string) {
-    if (this.queryMovie != movieName) {
+    if (this.searchMovies != movieName) {
       this.moviesService.setPage(0)
       this.paginator.firstPage()
     }
 
-    this.queryMovie = movieName
+    this.searchMovies = movieName
 
     if (movieName != '') {
       this.getSearchMovies(movieName)
@@ -97,12 +99,12 @@ export class MoviesComponent implements OnInit {
   }
 
   filterGenre(genres: string) {
-    if (this.queryGenre != genres) {
+    if (this.searchGenre != genres) {
       this.moviesService.setPage(0)
       this.paginator.firstPage()
     }
 
-    this.queryGenre = genres
+    this.searchGenre = genres
 
     if (genres != '') {
       this.getCategories(genres)

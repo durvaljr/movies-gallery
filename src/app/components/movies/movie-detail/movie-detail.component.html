@@ -16,8 +16,8 @@
                         <div class="facts">
                             <span class="release">Ano de lançadamento: {{movieSelect.release_date | date: "dd/MM/yyyy"}}</span> <br />
                             <div class="genres">
-                                <span *ngFor="let genre of movieSelect.genres">
-                                    <p class="genre_title">{{genre.name}}</p>
+                                <span *ngFor="let genre of movieSelect.genres; let i = index">
+                                    <p class="genre_title">{{genre.name}}{{i === movieSelect.genres.length - 1 ? '' : ', '}}</p>
                                 </span>
                             </div>
                             <span class="runtime">Duração: <b>{{movieSelect.runtime}} min</b></span><br />

@@ -64,17 +64,8 @@ h3 {
 }
 
 .genres .genre_title {
-    content: ",";
     color: white;
     padding-right: 3px;
-}
-
-.genres .genre_title::after {
-    content: ",";
-}
-
-.genres .genre_title::after:last-child {
-    content: "";
 }
 
 .title-overview {

@@ -21,6 +21,7 @@ export class MoviesService {
   };
 
   public getSearchMovies(movieName: string): Observable<any> {
+    console.log(this.page)
     return this.http.get(this.baseURL + "search/movie" + this.apiKey + "&query=" + movieName + "&page=" + this.page + "&include_adult=false")
   }
 
