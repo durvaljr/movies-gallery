@@ -14,7 +14,9 @@ export class MovieDetailComponent implements OnInit {
   movieSelect: Array<any>;
   err: any;
 
-  constructor(private route: ActivatedRoute, private moviesService: MoviesService) { }
+  constructor(private route: ActivatedRoute, private moviesService: MoviesService) {
+    
+   }
 
   ngOnInit() {
 
@@ -31,5 +33,7 @@ export class MovieDetailComponent implements OnInit {
       this.err = error
       console.log(this.err)
     })
+    
   }
+
 }
