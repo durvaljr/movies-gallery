@@ -86,11 +86,9 @@ export class MoviesComponent implements OnInit {
   getSearchMovies(movieName: string) {
     this.moviesService.getSearchMovies(movieName).subscribe(
       (data: any) => {
-        console.log(data)
         this.movies = data.results;
         this.totalResults = data.total_results;
         this.nMovies = data.results.length;
-
       }, error => {
         this.err = error;
         console.log(this.err)

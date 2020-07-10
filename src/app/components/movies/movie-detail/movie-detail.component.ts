@@ -13,6 +13,8 @@ export class MovieDetailComponent implements OnInit {
   movieId: any;
   movieSelect: Array<any>;
   err: any;
+  getIdElement: any;
+  currentFontSize: any;
 
   constructor(private route: ActivatedRoute, private moviesService: MoviesService) {
     
@@ -28,12 +30,25 @@ export class MovieDetailComponent implements OnInit {
     // buscando dos dados na API passando o Id recebido da rota como parâmetro
     this.moviesService.getMovieDetails(this.movieId.id).subscribe((data: any) => {
       this.movieSelect = data
-      console.log(this.movieSelect)
     }, error => {
       this.err = error
       console.log(this.err)
     })
-    
+
+  }
+
+  changeFontSize(event) {
+    this.getIdElement = document.getElementById("acessibilidade");
+    this.currentFontSize = this.getIdElement.style.fontSize;
+
+    if(event == 'plus') {
+      this.currentFontSize = parseInt(this.currentFontSize) + 2 + 'px'
+    } else if (event == 'less') {
+      this.currentFontSize = parseInt(this.currentFontSize) - 2 + 'px'
+    } else if (event == 'standardSize') {
+      this.currentFontSize = 16 + 'px'
+    }
+    this.getIdElement.style.fontSize = this.currentFontSize;
   }
 
 }

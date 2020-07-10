@@ -25,11 +25,15 @@
           </div>
           <h3 class="title-overview">Descrição</h3>
           <div class="overview">
-            <p class="acessibilidade">{{movieSelect.overview}}</p>
-            
+            <p id="acessibilidade" style="font-size: 16px;">{{movieSelect.overview}}</p>
           </div>
         </section>
       </div>
     </section>
+  </div>
+  <div class="buttons-acessibilidade">
+    <button (click)="changeFontSize('plus');">+</button>
+    <button (click)="changeFontSize('less');">-</button>
+    <button class="btn-100" (click)="changeFontSize('standardSize');">100%</button>
   </div>
 </div>

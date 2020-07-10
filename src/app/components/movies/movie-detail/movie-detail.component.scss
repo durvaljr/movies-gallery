@@ -1,7 +1,6 @@
-
 .keyboard {
   width: 750px;
-  margin: 52px auto;
+  margin: 32px auto;
   border-radius: 8px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
 
@@ -64,19 +63,47 @@ h3 {
 }
 
 .genres .genre_title {
-    color: white;
-    padding-right: 3px;
+  color: white;
+  padding-right: 3px;
 }
 
 .title-overview {
- padding-top: 8px;
+  padding-top: 8px;
 }
 
 .overview p {
-    text-align: justify;
+  text-align: justify;
+  font-size: 16px;
 }
 
 button {
-  width: 200px;
-  height: 200px;
+  width: 45px;
+  height: 36px;
+  background-color: #5cb85c;
+  color: white;
+  font-weight: 700;
+  font-size: 15px;
+
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  border: none;
+  margin-right: 4px;
+  outline: none;
+  cursor: pointer;
+}
+
+button:hover {
+  transition: 200ms;
+  background-color: #3ea13e;
+}
+
+.btn-100 {
+  font-size: 15px;
+}
+
+.buttons-acessibilidade {
+  display: flex;
+  padding-bottom: 20px;
+  margin-bottom: 20px;
+  padding-left: 40px;
 }
