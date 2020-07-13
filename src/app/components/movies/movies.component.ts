@@ -50,6 +50,7 @@ export class MoviesComponent implements OnInit {
     this.moviesService.getGenreMovies().subscribe(
       (data: any) => {
         this.genres = data.genres
+        console.log(this.genres)
       }, error => {
         this.err = error;
         console.log(this.err)
